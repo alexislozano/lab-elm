@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Alexis Lozano">
+  <title>Elm</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #2a211c;
+        color: #bdae9d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #bdae9d; background-color: #2a211c; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ffff00; } /* Alert */
+    code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #44aa43; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #049b0a; } /* Char */
+    code span.cn { } /* Constant */
+    code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+    code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+    code span.dt { text-decoration: underline; } /* DataType */
+    code span.dv { color: #44aa43; } /* DecVal */
+    code span.er { color: #ffff00; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #44aa43; } /* Float */
+    code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+    code span.op { } /* Operator */
+    code span.pp { font-weight: bold; } /* Preprocessor */
+    code span.sc { color: #049b0a; } /* SpecialChar */
+    code span.ss { color: #049b0a; } /* SpecialString */
+    code span.st { color: #049b0a; } /* String */
+    code span.va { } /* Variable */
+    code span.vs { color: #049b0a; } /* VerbatimString */
+    code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="presentation.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Elm</h1>
+  <p class="author">Alexis Lozano</p>
+  <p class="date">1 mars 2020</p>
+</section>
+
+<section>
+<section id="introduction" class="title-slide slide level1">
+<h1>Introduction</h1>
+
+</section>
+<section id="apéritif-1" class="slide level2">
+<h2>Apéritif #1</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">let</span> user <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="dt">firstName</span><span class="op">:</span> <span class="st">&quot;Clark&quot;</span><span class="op">,</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="dt">lastName</span><span class="op">:</span> <span class="st">&quot;Kent&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(user<span class="op">.</span><span class="at">sex</span>)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="apéritif-2" class="slide level2">
+<h2>Apéritif #2</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">let</span> user <span class="op">=</span> {</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="dt">firstName</span><span class="op">:</span> <span class="st">&quot;Clark&quot;</span><span class="op">,</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="dt">lastName</span><span class="op">:</span> <span class="st">&quot;Kent&quot;</span><span class="op">,</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="dt">isAnonymous</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">// Avec les dernières versions de JS on peut gérer ce</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">// problème avec des classes.</span></span></code></pre></div>
+</section>
+<section id="less-is-more-react" class="slide level2">
+<h2>Less is more (React)</h2>
+<ul>
+<li>Redux</li>
+<li>Webpack</li>
+<li>Sass</li>
+<li>Babel</li>
+<li>…</li>
+</ul>
+<p><img data-src="https://media.giphy.com/media/oYCvqkF8hMqs0/source.gif" width="400" /></p>
+</section>
+<section id="est-ce-quon-en-parle" class="slide level2">
+<h2>Est-ce qu’on en parle ?</h2>
+<p><img data-src="https://i.imgur.com/eO4PKSW.png" width="600" /></p>
+</section>
+<section id="un-dernier-pour-la-route" class="slide level2">
+<h2>Un dernier pour la route</h2>
+<p><img data-src="https://external-preview.redd.it/TXeMetxOhQPjhp5Bva2rIPIFTmbxx2lMWmzTfjl_ka4.png?auto=webp&amp;s=7092331fc47ff62f025373423669837881372a7c" width="600" /></p>
+<p><img data-src="https://media.giphy.com/media/a5viI92PAF89q/source.gif" width="250" /></p>
+</section>
+<section id="section" class="slide level2">
+<h2>…</h2>
+<p><img data-src="https://static01.nyt.com/images/2016/08/05/us/05onfire1_xp/05onfire1_xp-facebookJumbo.jpg" width="800" /></p>
+</section>
+</section>
+<section>
+<section id="la-solution-elm" class="title-slide slide level1">
+<h1>La solution ? Elm</h1>
+
+</section>
+<section id="wut" class="slide level2">
+<h2>Wut ?</h2>
+<ul>
+<li>Créé en 2012 par Evan Czaplicki</li>
+<li>Typage fort</li>
+<li>Fonctionnel</li>
+</ul>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Elm_logo.svg/1200px-Elm_logo.svg.png" width="200" /></p>
+</section>
+<section id="tooling" class="slide level2">
+<h2>Tooling</h2>
+<ul>
+<li>elm repl</li>
+<li>elm init</li>
+<li>elm format</li>
+<li>elm install</li>
+</ul>
+<p><img data-src="https://media.giphy.com/media/10aADbYxnJlc9q/source.gif" width="400" /></p>
+</section>
+<section id="demo-repl" class="slide level2">
+<h2>Demo REPL</h2>
+</section>
+<section id="elm-architecture" class="slide level2">
+<h2>Elm Architecture</h2>
+<p><img data-src="https://res.cloudinary.com/practicaldev/image/fetch/s--oT29AJmn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/pfdd18lau3fmjhv63bou.png" width="600" /></p>
+</section>
+<section id="hello-world" class="slide level2">
+<h2>Hello World</h2>
+<p><img data-src="https://media.giphy.com/media/Cmr1OMJ2FN0B2/source.gif" width="400" /></p>
+</section>
+</section>
+<section>
+<section id="comment-gérer-le-style" class="title-slide slide level1">
+<h1>Comment gérer le style ?</h1>
+
+</section>
+<section id="importer-des-fichiers-css" class="slide level2">
+<h2>Importer des fichiers CSS</h2>
+<p>Voilà.</p>
+<p><img data-src="https://media.giphy.com/media/1Z02vuppxP1Pa/source.gif" width="400" /></p>
+</section>
+<section id="utiliser-les-attributs" class="slide level2">
+<h2>Utiliser les attributs</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">div</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    [ <span class="fu">style</span> <span class="st">&quot;background-color&quot;</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="op">,</span> <span class="fu">style</span> <span class="st">&quot;padding&quot;</span> <span class="st">&quot;10px&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    ]</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    [ <span class="fu">text</span> <span class="fu">model</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    ]</span></code></pre></div>
+</section>
+<section id="elm-css" class="slide level2">
+<h2>elm-css</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode elm"><code class="sourceCode elm"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">div</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    [ <span class="fu">background</span><span class="op">-</span><span class="fu">color</span> (<span class="fu">rgb</span> <span class="dv">255</span> <span class="dv">0</span> <span class="dv">0</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="op">,</span> <span class="fu">padding</span> (<span class="fu">px</span> <span class="dv">10</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    ]</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    [ <span class="fu">text</span> <span class="fu">model</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    ]</span></code></pre></div>
+</section>
+<section id="elm-ui" class="slide level2">
+<h2>elm-ui</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode elm"><code class="sourceCode elm"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">div</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>    [ <span class="dt">Background</span><span class="op">.</span><span class="fu">color</span> (<span class="fu">rgb255</span> <span class="dv">255</span> <span class="dv">0</span> <span class="dv">0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="op">,</span> <span class="fu">padding</span> <span class="dv">10</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="op">,</span> <span class="fu">centerXY</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="op">,</span> <span class="fu">inFront</span> (<span class="fu">text</span> <span class="st">&quot;I&#39;m in front&quot;</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    ]</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    [ <span class="fu">text</span> <span class="fu">model</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>    ]</span></code></pre></div>
+</section>
+<section id="composants-pré-fabriqués" class="slide level2">
+<h2>Composants pré fabriqués</h2>
+<ul>
+<li>Material</li>
+<li>Bootstrap</li>
+<li>Bulma</li>
+<li>…</li>
+</ul>
+<p><img data-src="https://media.giphy.com/media/26gs9kSN6d5PxSsQU/source.gif" width="200" /></p>
+</section>
+</section>
+<section>
+<section id="intéropérabilité-js" class="title-slide slide level1">
+<h1>Intéropérabilité JS</h1>
+
+</section>
+<section id="flags" class="slide level2">
+<h2>Flags</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">var</span> app <span class="op">=</span> Elm<span class="op">.</span><span class="at">Main</span><span class="op">.</span><span class="fu">init</span>({</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="dt">node</span><span class="op">:</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;elm&#39;</span>)<span class="op">,</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="dt">flags</span><span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()</span>
+<span id="cb6-4"><a href="#cb6-4"></a>})<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode elm"><code class="sourceCode elm"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">init</span> : <span class="dt">Int</span> <span class="op">-&gt;</span> ( <span class="dt">Model</span><span class="op">,</span> <span class="dt">Cmd</span> <span class="dt">Msg</span> )</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">init</span> <span class="fu">currentTime</span> <span class="op">=</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="op">...</span></span></code></pre></div>
+</section>
+<section id="ports" class="slide level2">
+<h2>Ports</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode elm"><code class="sourceCode elm"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">port</span> <span class="fu">toJs</span> : <span class="dt">String</span> <span class="op">-&gt;</span> <span class="dt">Cmd</span> <span class="fu">msg</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">port</span> <span class="fu">toElm</span> : (<span class="dt">String</span> <span class="op">-&gt;</span> <span class="fu">msg</span>) <span class="op">-&gt;</span> <span class="dt">Sub</span> <span class="fu">msg</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">subscriptions</span> <span class="fu">model</span> <span class="op">=</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="fu">toElm</span> <span class="dt">ReceiveFromJs</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="fu">update</span> <span class="fu">msg</span> <span class="fu">model</span> <span class="op">=</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="cf">case</span> <span class="fu">msg</span> <span class="cf">of</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>        <span class="dt">SendToJs</span> <span class="fu">str</span> <span class="op">-&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>            ( <span class="fu">model</span><span class="op">,</span> <span class="fu">toJs</span> <span class="fu">str</span> )</span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a>        <span class="dt">ReceiveFromJs</span> <span class="fu">str</span> <span class="op">-&gt;</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a>            ( { <span class="fu">model</span> <span class="op">|</span> <span class="fu">message</span> <span class="op">=</span> <span class="fu">str</span> }<span class="op">,</span> <span class="dt">Cmd</span><span class="op">.</span><span class="fu">none</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1"></a>app<span class="op">.</span><span class="at">ports</span><span class="op">.</span><span class="at">toJs</span><span class="op">.</span><span class="fu">subscribe</span>(<span class="kw">function</span> (str) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    app<span class="op">.</span><span class="at">ports</span><span class="op">.</span><span class="at">toElm</span><span class="op">.</span><span class="fu">send</span>(<span class="st">&quot;JS value&quot;</span>)<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="web-components" class="slide level2">
+<h2>Web components</h2>
+<p>C’est plus compliqué :)</p>
+<p><img data-src="https://media.giphy.com/media/l0JMrPWRQkTeg3jjO/source.gif" width="600" /></p>
+</section>
+</section>
+<section>
+<section id="live-coding" class="title-slide slide level1">
+<h1>Live coding</h1>
+
+</section>
+<section id="aller-plus-loin" class="slide level2">
+<h2>Aller plus loin</h2>
+<ul>
+<li>Guide officiel <a href="https://guide.elm-lang.org">https://guide.elm-lang.org</a></li>
+<li>Tester facilement <a href="https://elm-lang.org/try">https://elm-lang.org/try</a></li>
+</ul>
+<p><img data-src="https://media.giphy.com/media/6Z3D5t31ZdoNW/source.gif" width="400" /></p>
+</section>
+</section>
+<section>
+<section id="merci-à-tous" class="title-slide slide level1">
+<h1>Merci à tous</h1>
+
+</section>
+<section id="des-questions" class="slide level2">
+<h2>Des questions ?</h2>
+<p><img data-src="https://media.giphy.com/media/12e5dX36aMp2Ba/giphy.gif" width="600" /></p>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
