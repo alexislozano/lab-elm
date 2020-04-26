@@ -4,4 +4,10 @@ A presentation (in French) about Elm.
 
 ## Generate the presentation
 
-pandoc -t revealjs -s presentation.md -o presentation.html --css presentation.css
+You'll need pandoc to compile the sources to html.
+
+Then, open a terminal and run :
+```bash
+npm install
+npm run build
+```

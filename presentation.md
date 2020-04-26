@@ -188,6 +188,7 @@ C'est plus compliqué :)
 
 * Guide officiel [https://guide.elm-lang.org](https://guide.elm-lang.org)
 * Tester facilement [https://elm-lang.org/try](https://elm-lang.org/try)
+* [https://github.com/alexislozano/lab-elm](https://github.com/alexislozano/lab-elm)
 
 ![](https://media.giphy.com/media/6Z3D5t31ZdoNW/source.gif){width=400px}
 
