@@ -1,3 +1,6 @@
+-- UI to https://randomuser.me/api/
+
+
 module Main exposing (..)
 
 import Browser
