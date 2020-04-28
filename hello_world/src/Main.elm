@@ -46,8 +46,8 @@ view : Model -> Html Msg
 view model =
     div []
         [ myButton Decrement "-"
-        , button [ onClick Reset ] [ text (String.fromInt model) ]
-        , button [ onClick Increment ] [ text "+" ]
+        , myButton Reset <| String.fromInt model
+        , myButton Increment "+"
         ]
 
 

@@ -11,3 +11,21 @@ Then, open a terminal and run :
 npm install
 npm run build
 ```
+
+## Projects
+
+Go in one of the projects, then
+```bash
+npm install
+npm run dev
+```
+
+### Results 
+
+#### Hello world
+
+![](hello_world.png)
+
+#### Live Coding
+
+![](live_coding.png)
