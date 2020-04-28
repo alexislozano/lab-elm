@@ -11,12 +11,18 @@ import Element.Input as Input
 import Html exposing (Html)
 
 
+main : Program () Model Msg
 main =
-    Browser.sandbox
-        { init = 0
+    Browser.element
+        { init = init
         , update = update
         , view = view
+        , subscriptions = subscriptions
         }
+
+
+type alias Model =
+    Int
 
 
 type Msg
@@ -25,18 +31,30 @@ type Msg
     | Reset
 
 
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( 0, Cmd.none )
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Increment ->
-            model + 1
+            ( model + 1, Cmd.none )
 
         Decrement ->
-            model - 1
+            ( model - 1, Cmd.none )
 
         Reset ->
-            0
+            ( 0, Cmd.none )
 
 
+view : Model -> Html Msg
 view model =
     Element.layout
         [ Background.color backgroundColor
