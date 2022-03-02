@@ -3,6 +3,6 @@
     "build": "pandoc -t revealjs -s presentation.md -o presentation.html --css presentation.css -V revealjs-url=./node_modules/reveal.js --highlight-style breezedark"
   },
   "dependencies": {
-    "reveal.js": "^3.9.2"
+    "reveal.js": "^4.3.0"
   }
 }
